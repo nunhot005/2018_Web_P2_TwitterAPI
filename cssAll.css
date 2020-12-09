@@ -1,0 +1,161 @@
+.cardDimenFix{
+    padding: 8px;
+}
+
+.card--headline {
+    font-weight: bold;
+    padding: 0 8px 8px 8px;
+}
+
+.card--overline {
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 8px;
+    letter-spacing: 2px;
+}
+
+.card--body {
+    padding: 8px 8px 4px 8px;
+    font-size: 14px;
+}
+
+.upsize {
+    transition: 0.3s;
+}
+
+.upsize:hover{
+    transform: scale(1.08,1.08);
+}
+
+body{
+    margin: 0;
+    background-color: #fa8072;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 60'%3E%3Cg %3E%3Crect fill='%23fa8072' width='11' height='11'/%3E%3Crect fill='%23fa8272' x='10' width='11' height='11'/%3E%3Crect fill='%23fa8471' y='10' width='11' height='11'/%3E%3Crect fill='%23fa8671' x='20' width='11' height='11'/%3E%3Crect fill='%23fa8971' x='10' y='10' width='11' height='11'/%3E%3Crect fill='%23fa8b71' y='20' width='11' height='11'/%3E%3Crect fill='%23fa8d71' x='30' width='11' height='11'/%3E%3Crect fill='%23fa8f71' x='20' y='10' width='11' height='11'/%3E%3Crect fill='%23fa9171' x='10' y='20' width='11' height='11'/%3E%3Crect fill='%23fa9371' y='30' width='11' height='11'/%3E%3Crect fill='%23fa9571' x='40' width='11' height='11'/%3E%3Crect fill='%23fa9772' x='30' y='10' width='11' height='11'/%3E%3Crect fill='%23fa9972' x='20' y='20' width='11' height='11'/%3E%3Crect fill='%23f99b72' x='10' y='30' width='11' height='11'/%3E%3Crect fill='%23f99e73' y='40' width='11' height='11'/%3E%3Crect fill='%23f9a073' x='50' width='11' height='11'/%3E%3Crect fill='%23f9a274' x='40' y='10' width='11' height='11'/%3E%3Crect fill='%23f9a474' x='30' y='20' width='11' height='11'/%3E%3Crect fill='%23f8a675' x='20' y='30' width='11' height='11'/%3E%3Crect fill='%23f8a876' x='10' y='40' width='11' height='11'/%3E%3Crect fill='%23f8aa77' y='50' width='11' height='11'/%3E%3Crect fill='%23f7ac78' x='60' width='11' height='11'/%3E%3Crect fill='%23f7ae78' x='50' y='10' width='11' height='11'/%3E%3Crect fill='%23f7b079' x='40' y='20' width='11' height='11'/%3E%3Crect fill='%23f7b17a' x='30' y='30' width='11' height='11'/%3E%3Crect fill='%23f6b37b' x='20' y='40' width='11' height='11'/%3E%3Crect fill='%23f6b57d' x='10' y='50' width='11' height='11'/%3E%3Crect fill='%23f6b77e' x='70' width='11' height='11'/%3E%3Crect fill='%23f5b97f' x='60' y='10' width='11' height='11'/%3E%3Crect fill='%23f5bb80' x='50' y='20' width='11' height='11'/%3E%3Crect fill='%23f5bd82' x='40' y='30' width='11' height='11'/%3E%3Crect fill='%23f4bf83' x='30' y='40' width='11' height='11'/%3E%3Crect fill='%23f4c185' x='20' y='50' width='11' height='11'/%3E%3Crect fill='%23f3c286' x='80' width='11' height='11'/%3E%3Crect fill='%23f3c488' x='70' y='10' width='11' height='11'/%3E%3Crect fill='%23f3c689' x='60' y='20' width='11' height='11'/%3E%3Crect fill='%23f2c88b' x='50' y='30' width='11' height='11'/%3E%3Crect fill='%23f2ca8d' x='40' y='40' width='11' height='11'/%3E%3Crect fill='%23f2cb8e' x='30' y='50' width='11' height='11'/%3E%3Crect fill='%23f1cd90' x='90' width='11' height='11'/%3E%3Crect fill='%23f1cf92' x='80' y='10' width='11' height='11'/%3E%3Crect fill='%23f1d194' x='70' y='20' width='11' height='11'/%3E%3Crect fill='%23f0d296' x='60' y='30' width='11' height='11'/%3E%3Crect fill='%23f0d498' x='50' y='40' width='11' height='11'/%3E%3Crect fill='%23f0d69a' x='40' y='50' width='11' height='11'/%3E%3Crect fill='%23f0d89c' x='90' y='10' width='11' height='11'/%3E%3Crect fill='%23efd99e' x='80' y='20' width='11' height='11'/%3E%3Crect fill='%23efdba0' x='70' y='30' width='11' height='11'/%3E%3Crect fill='%23efdda2' x='60' y='40' width='11' height='11'/%3E%3Crect fill='%23efdea4' x='50' y='50' width='11' height='11'/%3E%3Crect fill='%23efe0a6' x='90' y='20' width='11' height='11'/%3E%3Crect fill='%23eee1a8' x='80' y='30' width='11' height='11'/%3E%3Crect fill='%23eee3ab' x='70' y='40' width='11' height='11'/%3E%3Crect fill='%23eee5ad' x='60' y='50' width='11' height='11'/%3E%3Crect fill='%23eee6af' x='90' y='30' width='11' height='11'/%3E%3Crect fill='%23eee8b2' x='80' y='40' width='11' height='11'/%3E%3Crect fill='%23eee9b4' x='70' y='50' width='11' height='11'/%3E%3Crect fill='%23eeebb6' x='90' y='40' width='11' height='11'/%3E%3Crect fill='%23eeecb9' x='80' y='50' width='11' height='11'/%3E%3Crect fill='%23EEB' x='90' y='50' width='11' height='11'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Quicksand', 'Roboto', sans-serif;
+}
+
+footer {
+    position: fixed;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #FA8072;
+    color: white;
+    text-align: center;
+}
+
+.card--image {
+    width: 100%;
+    height: 195px;
+    background-color: crimson;
+    background-size: cover;
+    background-position: center;
+}
+
+.twitterImage{
+    margin-top: 8px;
+    margin-left: 8px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: crimson;
+    background-position: center;
+    background-size: cover;
+}
+
+.twitterName{
+    font-weight: bold;
+    padding: 8px 15px 0px 15px;
+}
+
+.twitter{
+    padding: 8px 15px 0px 15px;
+}
+
+.twitterTime{
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 20px 8px 0px 8px;
+    letter-spacing: 2px;
+}
+
+.search {
+    width: 40vw;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.20rem;
+    background-color: white;
+    background-image: url(assets/search.png);
+    background-position: 15px 13px;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 55px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.button {
+    width: 80px;
+    height: 48px;
+    color: blue;
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: 0.3rem;
+    font-weight: bolder;
+    background: transparent;
+    border: transparent;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card> div.container {
+    padding: 2px 16px;
+}
+
+.btn{
+    color: rosybrown;
+    margin: 5px;
+}
+
+.btn:hover {
+    background: transparent;
+    color: black;
+    box-shadow: inset 0 0 0 3px black;
+}
+
+.sub{
+    color: black;
+    margin: 5px;
+    border-radius: 32px;
+}
+
+.sub:hover{
+    background: transparent;
+    color: lightcoral;
+    box-shadow: inset 0 0 0 3px lightcoral;
+}
+
+.italyBun{
+    font-weight: bold;
+    color: black;
+}
+

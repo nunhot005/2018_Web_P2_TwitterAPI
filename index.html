@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Project 2</title>
+    <link rel="stylesheet" href="cssAll.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web/dist/material-components-web.min.css">
+    <script src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+
+    <script src="jsAll.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col"><br><br>
+            <h1 class="italyBun" style="text-align: center; font-size:70px">/ˈɪt̬.əl.i bʌn/</h1><br></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <!--Search Bar and Button-->
+            <form class="text-center" style="padding-bottom: 36px">
+                <input type="text" class="search" id="inputBox" style="">
+                <button class="mdc-button mdc-button--raised mdc-button--upgraded ripple" type="submit"
+                        id="searchButton">Search
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div id="webSearchList" class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+                <img src="assets/BongoCat1.gif" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>这是什么？</b></h4>
+                    <p>这是一张卡片。</p>
+                </div>
+            </div>
+        </div>
+        <div id="youtubeSearchList" class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+                <img src="assets/BongoCat1.gif" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>おまえ わ もう 死んでる。</b></h4>
+                    <p>なに!?</p>
+                </div>
+            </div>
+        </div>
+        <div id="twitterSearchList" class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+                <img src="assets/BongoCat1.gif" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>Привет</b></h4>
+                    <p>пиздец</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Dark Mode Button-->
+<button id="dark" class="ripple mdc-fab mdc-ripple-upgraded" aria-label="Create"
+        style="position: fixed; right: 72px; bottom: 72px; background: #4A148C  ">
+    <i class="mdc-fab__icon material-icons">brightness_4</i>
+</button>
+
+<!--Color Blind Mode Button-->
+<button id="colorblindMode" class="ripple mdc-fab mdc-ripple-upgraded" aria-label="Create"
+        style="position: fixed; right: 72px; bottom: 135px; background: #7E57C2">
+    <i class="mdc-fab__icon material-icons">
+        invert_colors_off</i>
+</button>
+
+<script>
+    /**
+     * fetch the keyword to TwitterFetch.php and turn the string to JSON
+     * JSON will usr xampp server talk with twitter server
+     * twitter cards will come up in for loop
+     * the chart from analyze will appear after twitter cards come out all
+     * @param keyword is the word that user search from input box
+     */
+    function fetchTwitter(keyword) {
+        $.getJSON('TwitterFetch.php', {q: keyword}, function (data) {
+            console.log(data);
+            if (data.statuses.length === 0) {
+                $("#chartContainerCard").css('display', 'none');
+                return;
+            }
+            let childrenElements = "";
+            for (let i = 0; i < data.statuses.length; i++) {
+                let current = data.statuses[i];
+                childrenElements += `<div class="upsize"><div class="card cardDimenFix">
+            <div class="twitterImage" style="background-image: url('${current.user.profile_image_url}')"></div>
+                        <h4 class="twitterName">${current.user.name}</h4>
+                        <span class="twitter">${current.text}</span>
+                        <div class="card--body">
+                            <h6 class="twitterTime">${current.created_at}</h6>
+                        </div>
+                        <button class="button" onclick="openLink('${current.entities.urls}')">NOPE</button>
+                    </div>
+                </div>`
+            }
+            $("#twitterSearchList").html(childrenElements);
+            darkTheme();
+            let canvas = $("#chart");
+            $("#chartContainerCard").css('display', 'flex');
+            pieApple(canvas, data);
+        });
+    }
+
+    /**
+     * Click search button or enter after type the keyword
+     * and then fetch data of google (academic conference web), youtube, twitter
+     * if don't put anything it will alert Invalid
+     */
+    $(function () {
+        $("#searchButton").click(function (e) {
+            e.preventDefault();
+
+            const buttons = document.querySelectorAll('.ripple');
+            for (const button of buttons) {
+                mdc.ripple.MDCRipple.attachTo(button);
+            }
+
+            let keyword = $("#inputBox").val();
+            if (keyword.trim() === "") {
+                alert("Invalid Keyword!");
+                return false;
+            }
+            fetchGoogleSearch(keyword);
+            fetchYoutubeSearch(keyword);
+            fetchTwitter(keyword);
+        })
+    });
+
+    /**
+     * fetch the keyword to google custom search
+     * get JSON from url, keyword, maxResult, key(API key), cx (custom search engine id) and function data
+     * JSON will talk with server and send back the request to client
+     * after that the google cards will come up (Only from Academic Conference websites from chosen)
+     * @param keyword is the word that user search from input box
+     */
+    function fetchGoogleSearch(keyword) {
+        const params = {
+            q: keyword,
+            maxResult: 10,
+            key: "AIzaSyCGG04g0exq4KqeXOw_OUAbWQmb_AWWUjA",
+            cx: "001479643782119327537:jf7lzzvuojs"
+        };
+        $("#webSearchList").html("");
+
+        $.getJSON('https://www.googleapis.com/customsearch/v1', params, function (data) {
+            console.log(data);
+            let childrenElements = "";
+            for (let i = 0; i < data.items.length; i++) {
+                let current = data.items[i];
+                childrenElements += `<div class="upsize"><div class="card cardDimenFix" onclick="openLink('${current.link}')">
+                        <h6 class="card--overline">${current.displayLink}</h6>
+                        <h4 class="card--headline">${current.title}</h4>
+                        <div class="card--body">
+                            <span>${current.snippet}</span>
+                        </div>
+                        <button class="button" onclick="openLink('${current.link}')">VISIT</button>
+                    </div>
+                    </div>`
+            }
+            $("#webSearchList").html(childrenElements);
+            darkTheme();
+        });
+    }
+
+    /**
+     * Open link in the new tab
+     * @param link is the link from google or youtube search
+     */
+    function openLink(link) {
+        let newWindow = window.open(link, "_blank");
+        newWindow.focus();
+    }
+
+    /**
+     * fetch the keyword to google custom search
+     * get JSON from url, keyword, maxResult, key(API key), cx (custom search engine id) and function data
+     * JSON will talk with server and send back the request to client
+     * after that the youtube cards will come up
+     * @param keyword is the word that user search from input box
+     */
+    function fetchYoutubeSearch(keyword) {
+        const params = {q: keyword, key: "AIzaSyCGG04g0exq4KqeXOw_OUAbWQmb_AWWUjA", part: "snippet", type: "video"};
+        $("#youtubeSearchList").html("");
+
+        $.getJSON('https://www.googleapis.com/youtube/v3/search', params, function (data) {
+            console.log(data);
+            let childrenElements = "";
+            for (let i = 0; i < data.items.length; i++) {
+                let current = data.items[i];
+                childrenElements += `<div class="upsize"><div class="card" onclick="openLink('http://www.youtube.com/watch?v=${current.id.videoId}')">
+                    <div class="card--image" style="background-image: url('${current.snippet.thumbnails.high.url}')"></div>
+                        <div class="cardDimenFix">
+                        <h6 class="card--overline">${current.snippet.channelTitle}</h6>
+                            <h4 class="card--headline">${current.snippet.title}</h4>
+                            <div class="card--body">
+                                <span>${current.snippet.description}</span>
+                            </div>
+                            <button class="button" onclick="openLink('http://www.youtube.com/watch?v=${current.id.videoId}">WATCH</button>
+                        </div>
+                    </div>
+                    </div>`
+            }
+            $("#youtubeSearchList").html(childrenElements);
+            darkTheme();
+        });
+    }
+
+</script>
+
+<!-- card for Pie chart-->
+<div id="chartContainerCard" class="" style="display: none">
+    <div class="chart-container"
+         style="position: relative; height:350px; width:350px; margin-bottom: 80px; margin-left: 250px">
+        <canvas id="chart"></canvas>
+    </div>
+</div>
+
+</body>
+</html>
