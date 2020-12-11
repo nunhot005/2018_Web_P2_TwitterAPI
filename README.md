@@ -1,5 +1,5 @@
 # 2018_Web_P2_TwitterAPI
-ITCS210_Web Programming
+ITCS210_Web Programming  
 Project 2: Academic Conference Search
 
 This is a group project that has 3 members.
